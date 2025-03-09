@@ -21,5 +21,5 @@ from prediction.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("predict/", include("prediction.urls")),
+    path("", include("prediction.urls")),
 ]

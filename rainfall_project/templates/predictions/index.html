@@ -1,39 +1,55 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Rainfall Prediction</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flood Prediction System</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
   </head>
+
   <body>
-    <h2>Rainfall Prediction</h2>
-    <form method="post">
-      {% csrf_token %}
+    <!-- About Us Button (Top Right) -->
+    <div class="top-bar">
+      <a href="{% url 'about' %}" class="about-btn">About Us</a>
+    </div>
 
-      <label for="subdivision">Subdivision:</label>
-      <select id="subdivision" name="subdivision">
-        {% for sub in subdivisions %}
-          <option value="{{ sub }}">{{ sub }}</option>
-        {% endfor %}
-      </select><br /><br />
+    <!-- Main Prediction Box -->
+    <div class="container">
+      <h2>🌊 Flood Prediction System</h2>
+      <p>Predict the risk of flooding based on location, year, and month.</p>
 
-      <label for="year">Year:</label>
-      <select id="year" name="year">
-        {% for year in years %}
-          <option value="{{ year }}">{{ year }}</option>
-        {% endfor %}
-      </select><br /><br />
+      <form method="post">
+        {% csrf_token %}
 
-      <label for="month">Month:</label>
-      <select id="month" name="month">
-        {% for key, value in months.items %}
-          <option value="{{ key }}">{{ value }}</option>
-        {% endfor %}
-      </select><br /><br />
+        <label for="subdivision">Subdivision:</label>
+        <select id="subdivision" name="subdivision">
+          {% for sub in subdivisions %}
+            <option value="{{ sub }}">{{ sub }}</option>
+          {% endfor %}
+        </select><br /><br />
 
-      <button type="submit">Predict</button>
-    </form>
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+          {% for year in years %}
+            <option value="{{ year }}">{{ year }}</option>
+          {% endfor %}
+        </select><br /><br />
 
-    {% if predicted_rainfall is not None %}
-      <h3>Predicted Rainfall: {{ predicted_rainfall }} mm</h3>
-    {% endif %}
+        <label for="month">Month:</label>
+        <select id="month" name="month">
+          {% for key, value in months.items %}
+            <option value="{{ key }}">{{ value }}</option>
+          {% endfor %}
+        </select><br /><br />
+
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if predicted_rainfall is not None %}
+        <h3 id="result">Predicted Rainfall: {{ predicted_rainfall }} mm</h3>
+      {% endif %}
+    </div>
   </body>
 </html>

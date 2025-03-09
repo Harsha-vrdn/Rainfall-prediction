@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}" />
+  </head>
+  <body>
+    <div class="about-container">
+      <h2>👥 About Us</h2>
+      <p>Meet the team behind the Flood Prediction System.</p>
+
+      <div class="team">
+        <div class="member">
+          <img src="{% static 'images/admin1.jpg' %}" alt="Anant Pandey" />
+          <h3>Anant Pandey</h3>
+          <p>Reg. No: PIET21AD004</p>
+        </div>
+        <div class="member">
+          <img src="{% static 'images/admin2.jpg' %}" alt="Nikhil Mishra" />
+          <h3>Nikhil Mishra</h3>
+          <p>Reg. No: PIET21AD033</p>
+        </div>
+        <div class="member">
+          <img src="{% static 'images/admin3.jpg' %}" alt="Nandini Tiwari" />
+          <h3>Nandini Tiwari</h3>
+          <p>Reg. No: PIET21AD032</p>
+        </div>
+      </div>
+
+      <a href="{% url 'predict_rainfall' %}" class="back-btn">⬅️ Back to Home</a>
+    </div>
+  </body>
+</html>

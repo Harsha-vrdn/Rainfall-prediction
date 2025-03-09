@@ -189,7 +189,7 @@ def predict_rainfall_view(request):
     df = pd.read_csv("Rainfall.csv")
     subdivisions = sorted(df["SUBDIVISION"].unique())
 
-    years = list(range(2024, 2101))
+    years = list(range(2025, 2101))
     months = {
         "JAN": "January",
         "FEB": "February",
@@ -235,3 +235,7 @@ def predict_rainfall_view(request):
             "months": months,
         },
     )
+
+
+def about(request):
+    return render(request, "predictions/about.html")
