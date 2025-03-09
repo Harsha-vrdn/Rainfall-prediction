@@ -49,6 +49,14 @@
 
       {% if predicted_rainfall is not None %}
         <h3 id="result">Predicted Rainfall: {{ predicted_rainfall }} mm</h3>
+
+        {% if predicted_rainfall >= 115.4 and predicted_rainfall <= 204.4 %}
+          <h3 style="color: orange;">🟠 Orange Alert: Heavy Rainfall Expected!, chances of flood</h3>
+        {% elif predicted_rainfall > 204.5 %}
+          <h3 style="color: red;">🔴 Red Alert: Very Heavy Rainfall Expected!, most severe take action immediately</h3>
+        {% else %}
+          <h3 style="color: green;">🟢 Green Alert: Normal Rainfall</h3>
+        {% endif %}
       {% endif %}
     </div>
   </body>
